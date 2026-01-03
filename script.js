@@ -92,6 +92,55 @@ function initVCardDownload() {
     }
 }
 
+// Копирование контактов в буфер обмена
+function initCopyButtons() {
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const textToCopy = button.getAttribute('data-copy');
+            
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                
+                // Визуальная обратная связь
+                const originalText = button.innerHTML;
+                button.classList.add('copied');
+                button.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Скопировано!
+                `;
+                
+                // Возвращаем исходное состояние через 2 секунды
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.innerHTML = originalText;
+                }, 2000);
+                
+            } catch (err) {
+                // Fallback для старых браузеров
+                console.error('Ошибка копирования:', err);
+                
+                // Показываем сообщение об ошибке
+                button.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Ошибка
+                `;
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }
+        });
+    });
+}
+
 // Инициализация всех функций при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     updateYear();
@@ -99,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollAnimations();
     initVCardDownload();
+    initCopyButtons();
     
     // Добавляем обработчик для системного изменения темы
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
