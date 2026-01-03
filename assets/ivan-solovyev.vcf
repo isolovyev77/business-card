@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Иван Соловьев
+N:Соловьев;Иван;;;
+NICKNAME:isolovyev
+TITLE:Энтузиаст ИИ, промт-инжиниринга и вайб-кодинга
+EMAIL;TYPE=INTERNET:isolovyev@mail.ru
+URL:https://t.me/isolovyev
+URL:https://instagram.com/isolovyev
+URL:https://isolovyev77.github.io/business-card/
+NOTE:GR-менеджер и тренер CrossFit. Внедряю ИИ в профессиональную деятельность и хобби. Занимаюсь промт-инжинирингом и вайб-кодингом.
+X-SOCIALPROFILE;TYPE=telegram:https://t.me/isolovyev
+X-SOCIALPROFILE;TYPE=instagram:https://instagram.com/isolovyev
+REV:2026-01-03T00:00:00Z
+END:VCARD
