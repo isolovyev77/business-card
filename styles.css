@@ -279,6 +279,7 @@ body {
     overflow: hidden;
     position: relative;
     background-color: var(--bg-secondary);
+    flex-shrink: 0;
 }
 
 .case-thumb img {
@@ -287,6 +288,8 @@ body {
     object-fit: cover;
     transition: transform 0.3s ease;
     display: block;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .case-thumb:hover img {
