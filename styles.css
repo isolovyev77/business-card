@@ -327,6 +327,7 @@ body {
 
 .case-actions .btn-primary,
 .case-actions .btn-secondary,
+.case-actions .btn-tertiary,
 .case-actions .btn-outline {
     display: inline-flex;
     align-items: center;
@@ -363,6 +364,19 @@ body {
 .case-actions .btn-secondary:hover {
     background-color: var(--accent-hover);
     border-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px var(--shadow-lg);
+}
+
+.case-actions .btn-tertiary {
+    background-color: #60a5fa;
+    color: white;
+    border: 1px solid #60a5fa;
+}
+
+.case-actions .btn-tertiary:hover {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px var(--shadow-lg);
 }
