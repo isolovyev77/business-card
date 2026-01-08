@@ -11,6 +11,7 @@
     --accent-primary: #2d2d2d;
     --accent-secondary: #4a4a4a;
     --accent-hover: #1a1a1a;
+    --accent-hover-secondary: #2a2a2a;
     --shadow: rgba(0, 0, 0, 0.1);
     --shadow-lg: rgba(0, 0, 0, 0.15);
 }
@@ -26,7 +27,8 @@
     --border-color: #404040;
     --accent-primary: #b0b0b0;
     --accent-secondary: #8a8a8a;
-    --accent-hover: #5a5a5a;
+    --accent-hover: #6a6a6a;
+    --accent-hover-secondary: #5a5a5a;
     --shadow: rgba(0, 0, 0, 0.3);
     --shadow-lg: rgba(0, 0, 0, 0.5);
 }
@@ -364,8 +366,8 @@ body {
 }
 
 .case-actions .btn-secondary:hover {
-    background-color: var(--accent-hover);
-    border-color: var(--accent-hover);
+    background-color: var(--accent-hover-secondary);
+    border-color: var(--accent-hover-secondary);
     transform: translateY(-1px);
     box-shadow: 0 2px 8px var(--shadow-lg);
 }
@@ -445,8 +447,8 @@ body {
 }
 
 .btn-secondary:hover {
-    background-color: var(--accent-hover);
-    border-color: var(--accent-hover);
+    background-color: var(--accent-hover-secondary);
+    border-color: var(--accent-hover-secondary);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px var(--shadow-lg);
 }
