@@ -1,9 +1,9 @@
-name: Deploy preview site
+name: Deploy production site
 
 on:
   push:
     branches:
-      - preview
+      - main
   workflow_dispatch:
 
 permissions:
@@ -23,18 +23,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Prepare preview files
+      - name: Prepare production files
         run: |
           set -euo pipefail
-          mkdir -p /tmp/site-preview
+          mkdir -p /tmp/site-production
           rsync -av \
             --delete \
             --exclude '.git/' \
             --exclude '.github/' \
-            ./ /tmp/site-preview/
-          touch /tmp/site-preview/.nojekyll
+            ./ /tmp/site-production/
+          touch /tmp/site-production/.nojekyll
 
-      - name: Publish to gh-pages preview folder
+      - name: Publish to gh-pages root
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
@@ -62,16 +62,17 @@ jobs:
             git checkout -B gh-pages refs/remotes/origin/gh-pages
           fi
 
-          mkdir -p preview
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            ! -name 'preview' \
+            -exec rm -rf {} +
 
-          find preview -mindepth 1 -maxdepth 1 -exec rm -rf {} +
-
-          rsync -av --delete /tmp/site-preview/ preview/
+          rsync -av --delete --exclude '.git/' /tmp/site-production/ ./
 
           if git status --short | grep . >/dev/null; then
             git add -A
-            git commit -m "Deploy preview site from ${GITHUB_SHA}"
+            git commit -m "Deploy production site from ${GITHUB_SHA}"
             git push origin gh-pages
           else
-            echo "No preview changes to publish"
+            echo "No production changes to publish"
           fi
