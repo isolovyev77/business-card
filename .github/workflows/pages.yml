@@ -56,6 +56,11 @@ jobs:
           fi
 
           cd "${WORKDIR}"
+          git fetch origin gh-pages:refs/remotes/origin/gh-pages >/dev/null 2>&1 || true
+
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git checkout -B gh-pages refs/remotes/origin/gh-pages
+          fi
 
           find . -mindepth 1 -maxdepth 1 \
             ! -name '.git' \
