@@ -67,7 +67,7 @@ jobs:
             ! -name 'preview' \
             -exec rm -rf {} +
 
-          rsync -av --delete /tmp/site-production/ ./
+          rsync -av --delete --exclude '.git/' /tmp/site-production/ ./
 
           if git status --short | grep . >/dev/null; then
             git add -A
