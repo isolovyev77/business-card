@@ -54,7 +54,7 @@ git push origin main
 1. Откройте репозиторий на GitHub: `https://github.com/isolovyev77/business-card`
 2. Перейдите в **Settings** (Настройки) → **Pages** (в левом меню)
 3. В разделе **Source** (Источник):
-   - **Branch**: выберите `main`
+   - **Branch**: выберите `gh-pages`
    - **Folder**: выберите `/ (root)`
 4. Нажмите **Save**
 
@@ -65,20 +65,53 @@ GitHub Pages автоматически опубликует сайт через
 
 **https://isolovyev77.github.io/business-card/**
 
+## 👀 Вариант 2: отдельное Preview до «боевой» версии
+
+В проект добавлен workflow `.github/workflows/pages-preview.yml`, который публикует:
+
+- ветку `main` → **боевая версия**:
+  `https://isolovyev77.github.io/business-card/`
+- ветку `preview` → **превью-версия**:
+  `https://isolovyev77.github.io/business-card/preview/`
+
+### Как пользоваться preview
+
+1. Создайте/обновите ветку `preview`:
+
+```bash
+git checkout -B preview
+git push -u origin preview
+```
+
+2. Делайте изменения и пушьте в `preview`:
+
+```bash
+git add .
+git commit -m "Preview: test redesign"
+git push
+```
+
+3. Проверяйте результат по ссылке:
+   **https://isolovyev77.github.io/business-card/preview/**
+
+Когда всё устраивает — переносите изменения в `main`.
+
 ## 🔄 Обновление сайта
 
 Для обновления содержимого сайта:
 
 1. Внесите изменения в файлы (`index.html`, `styles.css`, `script.js`)
-2. Закоммитьте и отправьте изменения:
+2. Закоммитьте и отправьте изменения в нужную ветку:
 
 ```bash
 git add .
 git commit -m "Update website content"
-git push origin main
+git push origin main      # боевая версия
+# или
+git push origin preview   # превью-версия
 ```
 
-3. GitHub Pages автоматически обновит сайт в течение нескольких минут
+3. GitHub Pages автоматически обновит соответствующий URL в течение нескольких минут
 
 ## ✨ Возможности
 

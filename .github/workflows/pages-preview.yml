@@ -1,0 +1,52 @@
+name: Deploy site (prod + preview)
+
+on:
+  push:
+    branches:
+      - main
+      - preview
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build static bundle
+        run: |
+          rm -rf _site
+          mkdir -p _site/assets
+          cp index.html styles.css script.js _site/
+          cp -R assets/* _site/assets/
+
+      - name: Select deploy target
+        id: target
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "preview" ]; then
+            echo "destination_dir=preview" >> "$GITHUB_OUTPUT"
+            echo "target_url=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview/" >> "$GITHUB_OUTPUT"
+          else
+            echo "destination_dir=." >> "$GITHUB_OUTPUT"
+            echo "target_url=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: _site
+          destination_dir: ${{ steps.target.outputs.destination_dir }}
+          keep_files: true
+          enable_jekyll: false
+
+      - name: Deployment summary
+        run: |
+          echo "Deployed branch: ${GITHUB_REF_NAME}"
+          echo "Published URL: ${{ steps.target.outputs.target_url }}"

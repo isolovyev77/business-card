@@ -30,6 +30,12 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">Иван Соловьев</div>
+                <nav class="header-nav" aria-label="Навигация по странице">
+                    <a href="#about">Обо мне</a>
+                    <a href="#focus">Фокус</a>
+                    <a href="#cases">Кейсы</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
                 <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
                     <svg class="theme-icon sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -52,18 +58,37 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" id="about">
             <div class="container">
+                <p class="hero-kicker">AI × GR × CrossFit</p>
                 <div class="avatar">
                     <img src="assets/avatar.png" alt="Иван Соловьев">
                 </div>
                 <h1 class="hero-title">Энтузиаст ИИ, промт-инжиниринга и вайб-кодинга</h1>
                 <p class="hero-subtitle">Внедряю ИИ в профессиональную деятельность (GR-менеджер) и хобби (тренер CrossFit).</p>
+                <div class="hero-actions">
+                    <a href="#cases" class="btn-primary">Смотреть кейсы</a>
+                    <a href="#contacts" class="btn-outline">Связаться</a>
+                </div>
+                <div class="hero-metrics">
+                    <article class="metric">
+                        <p class="metric-value">3+</p>
+                        <p class="metric-label">направления применения ИИ</p>
+                    </article>
+                    <article class="metric">
+                        <p class="metric-value">6</p>
+                        <p class="metric-label">публичных кейсов и материалов</p>
+                    </article>
+                    <article class="metric">
+                        <p class="metric-value">24/7</p>
+                        <p class="metric-label">тестирование новых инструментов</p>
+                    </article>
+                </div>
             </div>
         </section>
 
         <!-- Что делаю -->
-        <section class="section">
+        <section class="section" id="focus">
             <div class="container">
                 <h2 class="section-title">Что делаю</h2>
                 <div class="cards">
@@ -105,7 +130,7 @@
         </section>
 
         <!-- Кейсы / проекты -->
-        <section class="section">
+        <section class="section" id="cases">
             <div class="container">
                 <h2 class="section-title">Кейсы</h2>
                 <div class="cases-grid">
@@ -201,7 +226,7 @@
         </section>
 
         <!-- Контакты -->
-        <section class="section section-contacts">
+        <section class="section section-contacts" id="contacts">
             <div class="container">
                 <h2 class="section-title">Контакты</h2>
                 <p class="contacts-intro">Открыт к новым знакомствам и сотрудничеству. Всегда рад обсудить ИИ, промт-инжиниринг и интересные проекты.</p>
