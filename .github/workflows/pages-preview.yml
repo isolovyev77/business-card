@@ -1,0 +1,71 @@
+name: Deploy preview site
+
+on:
+  push:
+    branches:
+      - preview
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare preview files
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/site-preview
+          rsync -av \
+            --delete \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            ./ /tmp/site-preview/
+          touch /tmp/site-preview/.nojekyll
+
+      - name: Publish to gh-pages preview folder
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          WORKDIR="$(mktemp -d)"
+
+          if git ls-remote --exit-code --heads "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPOSITORY}.git" gh-pages >/dev/null 2>&1; then
+            git clone --branch gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPOSITORY}.git" "${WORKDIR}"
+          else
+            git init "${WORKDIR}"
+            cd "${WORKDIR}"
+            git checkout --orphan gh-pages
+            git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
+          fi
+
+          cd "${WORKDIR}"
+          mkdir -p preview
+
+          find preview -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+
+          rsync -av --delete /tmp/site-preview/ preview/
+
+          if git status --short | grep . >/dev/null; then
+            git add -A
+            git commit -m "Deploy preview site from ${GITHUB_SHA}"
+            git push origin gh-pages
+          else
+            echo "No preview changes to publish"
+          fi
