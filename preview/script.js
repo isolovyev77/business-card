@@ -14,7 +14,9 @@ const I18N = {
         "hero.btnCases": "Смотреть кейсы",
         "hero.btnContact": "Связаться",
         "metric1": "направления применения ИИ",
-        "metric2": "публичных кейсов и материалов",
+        "metric2.one": "публичный кейс и материал",
+        "metric2.few": "публичных кейса и материала",
+        "metric2.many": "публичных кейсов и материалов",
         "metric3": "тестирование новых инструментов",
         "sec.focus": "Что делаю",
         "focus1.title": "Промт-инжиниринг",
@@ -84,7 +86,8 @@ const I18N = {
         "hero.btnCases": "See the cases",
         "hero.btnContact": "Get in touch",
         "metric1": "areas where I apply AI",
-        "metric2": "public cases and materials",
+        "metric2.one": "public case and material",
+        "metric2.many": "public cases and materials",
         "metric3": "testing new tools",
         "sec.focus": "What I do",
         "focus1.title": "Prompt engineering",
@@ -158,6 +161,27 @@ function detectLang() {
     return nav.startsWith("ru") ? "ru" : "en";
 }
 
+function casesPluralKey(n, lang) {
+    if (lang === "ru") {
+        const mod10 = n % 10;
+        const mod100 = n % 100;
+        if (mod10 === 1 && mod100 !== 11) return "metric2.one";
+        if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "metric2.few";
+        return "metric2.many";
+    }
+    return n === 1 ? "metric2.one" : "metric2.many";
+}
+
+// Число в метрике берётся из самой сетки кейсов: добавили карточку - счётчик вырос сам.
+function syncCasesMetric() {
+    const count = document.querySelectorAll(".cases-grid .case-card").length;
+    if (!count) return;
+    const value = document.getElementById("casesCount");
+    const label = document.getElementById("casesLabel");
+    if (value) value.textContent = String(count);
+    if (label) label.textContent = t(casesPluralKey(count, CURRENT_LANG));
+}
+
 function applyLang(lang) {
     const dict = I18N[lang] || I18N.ru;
     CURRENT_LANG = lang;
@@ -196,6 +220,7 @@ function applyLang(lang) {
     }
 
     localStorage.setItem("lang", lang);
+    syncCasesMetric();
 }
 
 function initLang() {
