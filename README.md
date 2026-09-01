@@ -20,7 +20,7 @@ python3 -m http.server 8000
 .
 ├── index.html              # Главная страница
 ├── styles.css              # Стили сайта
-├── script.js               # Интерактивность и переключатель темы
+├── script.js               # Интерактивность, темы и переключатель языка
 ├── assets/
 │   ├── avatar.png          # Аватар для сайта и favicon
 │   ├── og-image.png        # Изображение для социальных сетей (Open Graph)
@@ -33,7 +33,10 @@ python3 -m http.server 8000
 │   ├── star-seed.pdf       # PDF буклет детской сказки
 │   ├── muscle-growth.png   # Превью кейса: учебные материалы
 │   ├── muscle-infographics.png  # Инфографика о росте мышц
-│   └── muscle-presentation.pdf  # Презентация о росте мышц
+│   ├── muscle-presentation.pdf  # Презентация о росте мышц
+│   ├── apify-actors.png    # Превью кейса: акторы на Apify
+│   └── coach-workout-tools.png  # Превью кейса: Coach Workout Tools
+├── AGENTS.md               # Правила правок для агентов
 └── README.md
 ```
 
