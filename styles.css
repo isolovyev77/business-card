@@ -14,6 +14,7 @@
     --accent-hover-secondary: #2a2a2a;
     --shadow: rgba(0, 0, 0, 0.1);
     --shadow-lg: rgba(0, 0, 0, 0.15);
+    --gradient-primary: linear-gradient(120deg, #1f2937 0%, #374151 45%, #4b5563 100%);
 }
 
 /* Темная тема */
@@ -31,6 +32,7 @@
     --accent-hover-secondary: #5a5a5a;
     --shadow: rgba(0, 0, 0, 0.3);
     --shadow-lg: rgba(0, 0, 0, 0.5);
+    --gradient-primary: linear-gradient(120deg, #0f172a 0%, #1f2937 40%, #374151 100%);
 }
 
 /* Сброс стилей */
@@ -58,7 +60,7 @@ body {
 
 /* Шапка */
 .header {
-    background-color: var(--bg-primary);
+    background-color: color-mix(in srgb, var(--bg-primary) 88%, transparent);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -72,11 +74,33 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 16px 0;
+    gap: 20px;
 }
 
 .logo {
     font-size: 20px;
     font-weight: 600;
+    color: var(--text-primary);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header-nav a:hover {
+    background-color: var(--bg-secondary);
     color: var(--text-primary);
 }
 
@@ -122,8 +146,40 @@ body {
 
 /* Hero секция */
 .hero {
-    padding: 120px 0 80px;
+    padding: 120px 0 96px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 20px 24px auto;
+    height: 300px;
+    border-radius: 24px;
+    background: var(--gradient-primary);
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-kicker {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 /* Аватар */
@@ -166,6 +222,53 @@ body {
     max-width: 100%;
     margin: 0 auto;
     line-height: 1.5;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-outline {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hero-metrics {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.metric {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 6px 20px var(--shadow);
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-primary);
+}
+
+.metric-label {
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
 }
 
 /* Секции */
@@ -571,6 +674,10 @@ body {
 
 /* Адаптивность */
 @media (max-width: 768px) {
+    .header-nav {
+        display: none;
+    }
+
     .hero {
         padding: 80px 0 60px;
     }
@@ -614,6 +721,14 @@ body {
     
     .social-links {
         gap: 24px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -660,4 +775,46 @@ body {
 .hero,
 .section {
     animation: fadeInUp 0.6s ease-out;
+}
+
+/* Переключатель языка рядом с переключателем темы */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lang-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    color: var(--text-primary);
+    font: inherit;
+    line-height: 1;
+}
+
+.lang-toggle:hover {
+    background-color: var(--bg-secondary);
+}
+
+.lang-code {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 480px) {
+    .lang-toggle {
+        padding: 6px;
+        gap: 4px;
+    }
+    .lang-code {
+        font-size: 12px;
+    }
 }
