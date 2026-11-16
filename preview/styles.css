@@ -569,6 +569,8 @@ body {
 
 /* Кнопки контактов */
 .contact-buttons {
+    --contact-soft-bg: #d8dde2;
+    --contact-soft-hover: #cbd2d8;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -625,6 +627,46 @@ body {
     background-color: var(--bg-secondary);
     border-color: var(--text-secondary);
     transform: translateY(-2px);
+}
+
+.contact-buttons .btn-soft {
+    background-color: var(--contact-soft-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--text-muted);
+}
+
+.contact-buttons .btn-soft:hover {
+    background-color: var(--contact-soft-hover);
+    transform: translateY(-2px);
+}
+
+.contact-buttons .btn-outline:not(:hover) {
+    border-color: var(--text-muted);
+}
+
+[data-theme="dark"] .contact-buttons {
+    --contact-soft-bg: #4d4d4d;
+    --contact-soft-hover: #585858;
+}
+
+[data-theme="dark"] .contact-buttons :is(.btn-primary, .btn-secondary) {
+    color: var(--bg-primary);
+}
+
+[data-theme="dark"] .contact-buttons .btn-primary:hover {
+    background-color: #c8c8c8;
+    border-color: #c8c8c8;
+}
+
+[data-theme="dark"] .contact-buttons .btn-secondary:hover {
+    background-color: #a3a3a3;
+    border-color: #a3a3a3;
+}
+
+.contact-buttons .contact-btn:focus-visible,
+.social-links .social-link:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
 }
 
 /* Блок "Скопировать контакты" */
@@ -708,14 +750,15 @@ body {
 }
 
 .social-link {
-    color: var(--text-muted);
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 16px;
     transition: color 0.2s ease;
 }
 
 .social-link:hover {
-    color: var(--accent-primary);
+    color: var(--text-primary);
+    text-decoration: underline;
 }
 
 /* Футер */
