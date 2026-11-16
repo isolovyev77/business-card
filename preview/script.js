@@ -35,6 +35,7 @@ const I18N = {
         "sec.cases": "Кейсы",
         "case.connector.title": "Рекламный ролик «Р7-Коннектор для 1С»",
         "case.connector.desc": "Короткая анимация о том, как перенести готовый отчёт из 1С в Р7 офис.",
+        "case.connector.playLabel": "Воспроизвести рекламный ролик «Р7-Коннектор для 1С»",
         "case.connector.videoLabel": "Рекламный ролик «Р7-Коннектор для 1С»",
         "case.connector.videoLink": "Открыть ролик (MP4)",
         "case.dostupno.title": "Доступно: проверка доступности сайтов",
@@ -77,6 +78,7 @@ const I18N = {
         "contact.tg": "Написать в Telegram",
         "contact.mail": "Написать письмо",
         "contact.vcard": "Скачать контакт (vCard)",
+        "contact.consultation": "Заказать консультацию",
         "copy.tgLabel": "Telegram:",
         "copy.mailLabel": "E-mail:",
         "copy.btn": "Скопировать",
@@ -119,6 +121,7 @@ const I18N = {
         "sec.cases": "Cases",
         "case.connector.title": "R7 Connector for 1C: promo video",
         "case.connector.desc": "A short animation on exporting a finished report from 1C to R7 Office (in Russian).",
+        "case.connector.playLabel": "Play the R7 Connector for 1C promo video (in Russian)",
         "case.connector.videoLabel": "R7 Connector for 1C promo video (in Russian)",
         "case.connector.videoLink": "Open video (MP4, in Russian)",
         "case.dostupno.title": "Dostupno: website accessibility checks",
@@ -161,6 +164,7 @@ const I18N = {
         "contact.tg": "Message me on Telegram",
         "contact.mail": "Send an email",
         "contact.vcard": "Download contact (vCard)",
+        "contact.consultation": "Book a consultation",
         "copy.tgLabel": "Telegram:",
         "copy.mailLabel": "E-mail:",
         "copy.btn": "Copy",
@@ -402,9 +406,27 @@ function initCopyButtons() {
     });
 }
 
+function initConnectorVideo() {
+    const cover = document.getElementById('connectorPlay');
+    const video = document.getElementById('connectorVideo');
+    if (!cover || !video) return;
+
+    cover.addEventListener('click', () => {
+        video.src = video.dataset.src;
+        cover.hidden = true;
+        video.hidden = false;
+        video.focus({ preventScroll: true });
+        video.play().catch(() => {
+            // При отказе автовоспроизведения остаются штатные кнопки плеера.
+        });
+    }, { once: true });
+    cover.hidden = false;
+}
+
 // Инициализация всех функций при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     initLang();
+    initConnectorVideo();
     updateYear();
     initTheme();
     initSmoothScroll();

@@ -401,6 +401,51 @@ body {
     filter: grayscale(0%);
 }
 
+.case-thumb[hidden] {
+    display: none;
+}
+
+.case-video-cover {
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.case-video-cover:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: -6px;
+}
+
+.case-video-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.case-video-play-icon::after {
+    content: "";
+    margin-left: 4px;
+    border-block: 10px solid transparent;
+    border-left: 16px solid #171717;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .case-video-cover img {
+        transition: none;
+    }
+
+    .case-video-cover:hover img {
+        transform: none;
+    }
+}
+
 .case-video {
     object-fit: contain;
     background-color: #171717;
