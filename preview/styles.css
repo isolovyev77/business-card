@@ -411,6 +411,11 @@ body {
     cursor: pointer;
 }
 
+.case-video-cover img {
+    object-position: 66% center;
+    filter: none;
+}
+
 .case-video-cover:focus-visible {
     outline: 3px solid #fff;
     outline-offset: -6px;
@@ -418,9 +423,9 @@ body {
 
 .case-video-play-icon {
     position: absolute;
-    top: 50%;
+    bottom: 14px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     display: grid;
     place-items: center;
     width: 64px;
