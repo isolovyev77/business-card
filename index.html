@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/avatar.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/avatar.png">
     
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
     <header class="header">
@@ -145,16 +145,24 @@
                 <h2 class="section-title" data-i18n="sec.cases">Кейсы</h2>
                 <div class="cases-grid">
                     <div class="case-card">
-                        <video class="case-thumb case-video" controls playsinline preload="none"
-                            poster="assets/r7-connector-poster.webp"
+                        <button class="case-thumb case-video-cover" id="connectorPlay" type="button" hidden
+                            aria-label="Воспроизвести рекламный ролик «Р7-Коннектор для 1С»"
+                            data-i18n-attr="aria-label:case.connector.playLabel">
+                            <img src="assets/r7-connector-poster.webp?v=2" alt="" width="960" height="540">
+                            <span class="case-video-play-icon" aria-hidden="true"></span>
+                        </button>
+                        <video class="case-thumb case-video" id="connectorVideo" controls playsinline preload="none" hidden tabindex="0"
+                            poster="assets/r7-connector-poster.webp?v=2" data-src="assets/r7-connector.mp4"
                             aria-label="Рекламный ролик «Р7-Коннектор для 1С»"
                             data-i18n-attr="aria-label:case.connector.videoLabel">
-                            <source src="assets/r7-connector.mp4" type="video/mp4">
                             <a href="assets/r7-connector.mp4" data-i18n="case.connector.videoLink">Открыть ролик (MP4)</a>
                         </video>
                         <div class="case-body">
                             <h3 class="case-title" data-i18n="case.connector.title">Рекламный ролик «Р7-Коннектор для 1С»</h3>
                             <p class="case-description" data-i18n="case.connector.desc">Короткая анимация о том, как перенести готовый отчёт из 1С в Р7 офис.</p>
+                            <noscript>
+                                <a href="assets/r7-connector.mp4">Открыть ролик (MP4)</a>
+                            </noscript>
                         </div>
                     </div>
 
@@ -334,6 +342,13 @@
                         </svg>
                         <span data-i18n="contact.vcard">Скачать контакт (vCard)</span>
                     </a>
+                    <a href="https://t.me/is_consulting_bot" target="_blank" rel="noopener noreferrer" class="contact-btn btn-outline">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                        </svg>
+                        <span data-i18n="contact.consultation">Заказать консультацию</span>
+                    </a>
                 </div>
 
                 <div class="copy-contacts">
@@ -376,6 +391,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=6"></script>
+    <script src="script.js?v=7"></script>
 </body>
 </html>
