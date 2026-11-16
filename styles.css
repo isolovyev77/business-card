@@ -401,6 +401,16 @@ body {
     filter: grayscale(0%);
 }
 
+.case-video {
+    object-fit: contain;
+    background-color: #171717;
+    color: #ffffff;
+}
+
+.case-video a {
+    color: inherit;
+}
+
 /* Тело карточки */
 .case-body {
     padding: 24px;
@@ -473,6 +483,10 @@ body {
     border-color: var(--accent-hover-secondary);
     transform: translateY(-1px);
     box-shadow: 0 2px 8px var(--shadow-lg);
+}
+
+[data-theme="dark"] .case-actions :is(.btn-primary, .btn-secondary):not(:hover) {
+    color: var(--bg-primary);
 }
 
 .case-actions .btn-tertiary {

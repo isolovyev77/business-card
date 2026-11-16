@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/avatar.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/avatar.png">
     
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
     <header class="header">
@@ -144,6 +144,46 @@
             <div class="container">
                 <h2 class="section-title" data-i18n="sec.cases">Кейсы</h2>
                 <div class="cases-grid">
+                    <div class="case-card">
+                        <video class="case-thumb case-video" controls playsinline preload="none"
+                            poster="assets/r7-connector-poster.webp"
+                            aria-label="Рекламный ролик «Р7-Коннектор для 1С»"
+                            data-i18n-attr="aria-label:case.connector.videoLabel">
+                            <source src="assets/r7-connector.mp4" type="video/mp4">
+                            <a href="assets/r7-connector.mp4" data-i18n="case.connector.videoLink">Открыть ролик (MP4)</a>
+                        </video>
+                        <div class="case-body">
+                            <h3 class="case-title" data-i18n="case.connector.title">Рекламный ролик «Р7-Коннектор для 1С»</h3>
+                            <p class="case-description" data-i18n="case.connector.desc">Короткая анимация о том, как перенести готовый отчёт из 1С в Р7 офис.</p>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <a href="https://isolovyev.gitverse.site/dostupno/" target="_blank" rel="noopener noreferrer" class="case-thumb" data-i18n-attr="href:case.dostupno.url">
+                            <img src="assets/dostupno.webp" alt="Иллюстрация проекта «Доступно»: сайт, клавиатура и лупа" data-i18n-attr="alt:case.dostupno.alt" loading="lazy">
+                        </a>
+                        <div class="case-body">
+                            <h3 class="case-title" data-i18n="case.dostupno.title">Доступно: проверка доступности сайтов</h3>
+                            <p class="case-description" data-i18n="case.dostupno.desc">Методика и сервис для проверки сайтов с отчётами и рекомендациями по устранению барьеров.</p>
+                            <div class="case-actions">
+                                <a href="https://isolovyev.gitverse.site/dostupno/" target="_blank" rel="noopener noreferrer" class="btn-primary" data-i18n="case.dostupno.btn" data-i18n-attr="href:case.dostupno.url">Открыть сайт</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <a href="https://isolovyev.gitverse.site/accessibility/" target="_blank" rel="noopener noreferrer" class="case-thumb">
+                            <img src="assets/software-accessibility.webp" alt="Титульный слайд презентации «Цифровая доступность российского ПО»" data-i18n-attr="alt:case.accessibility.alt" loading="lazy">
+                        </a>
+                        <div class="case-body">
+                            <h3 class="case-title" data-i18n="case.accessibility.title">Цифровая доступность российского ПО</h3>
+                            <p class="case-description" data-i18n="case.accessibility.desc">Презентация для Минцифры России: 18 интерактивных слайдов о барьерах и способах сделать программы доступнее.</p>
+                            <div class="case-actions">
+                                <a href="https://isolovyev.gitverse.site/accessibility/" target="_blank" rel="noopener noreferrer" class="btn-primary" data-i18n="case.accessibility.btn">Открыть презентацию</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Кейс 1: Telegram-бот -->
                     <div class="case-card">
                         <a href="https://t.me/is_k_bot" target="_blank" rel="noopener noreferrer" class="case-thumb">
@@ -336,6 +376,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>
