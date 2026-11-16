@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/avatar.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/avatar.png">
     
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
     <header class="header">
@@ -144,6 +144,54 @@
             <div class="container">
                 <h2 class="section-title" data-i18n="sec.cases">Кейсы</h2>
                 <div class="cases-grid">
+                    <div class="case-card">
+                        <button class="case-thumb case-video-cover" id="connectorPlay" type="button" hidden
+                            aria-label="Воспроизвести рекламный ролик «Р7-Коннектор для 1С»"
+                            data-i18n-attr="aria-label:case.connector.playLabel">
+                            <img src="assets/r7-connector-poster.webp?v=3" alt="" width="960" height="540">
+                            <span class="case-video-play-icon" aria-hidden="true"></span>
+                        </button>
+                        <video class="case-thumb case-video" id="connectorVideo" controls playsinline preload="none" hidden tabindex="0"
+                            poster="assets/r7-connector-poster.webp?v=3" data-src="assets/r7-connector.mp4"
+                            aria-label="Рекламный ролик «Р7-Коннектор для 1С»"
+                            data-i18n-attr="aria-label:case.connector.videoLabel">
+                            <a href="assets/r7-connector.mp4" data-i18n="case.connector.videoLink">Открыть ролик (MP4)</a>
+                        </video>
+                        <div class="case-body">
+                            <h3 class="case-title" data-i18n="case.connector.title">Рекламный ролик «Р7-Коннектор для 1С»</h3>
+                            <p class="case-description" data-i18n="case.connector.desc">Короткая анимация о том, как перенести готовый отчёт из 1С в Р7 офис.</p>
+                            <noscript>
+                                <a href="assets/r7-connector.mp4">Открыть ролик (MP4)</a>
+                            </noscript>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <a href="https://isolovyev.gitverse.site/dostupno/" target="_blank" rel="noopener noreferrer" class="case-thumb" data-i18n-attr="href:case.dostupno.url">
+                            <img src="assets/dostupno.webp" alt="Иллюстрация проекта «Доступно»: сайт, клавиатура и лупа" data-i18n-attr="alt:case.dostupno.alt" loading="lazy">
+                        </a>
+                        <div class="case-body">
+                            <h3 class="case-title" data-i18n="case.dostupno.title">Доступно: проверка доступности сайтов</h3>
+                            <p class="case-description" data-i18n="case.dostupno.desc">Методика и сервис для проверки сайтов с отчётами и рекомендациями по устранению барьеров.</p>
+                            <div class="case-actions">
+                                <a href="https://isolovyev.gitverse.site/dostupno/" target="_blank" rel="noopener noreferrer" class="btn-primary" data-i18n="case.dostupno.btn" data-i18n-attr="href:case.dostupno.url">Открыть сайт</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <a href="https://isolovyev.gitverse.site/accessibility/" target="_blank" rel="noopener noreferrer" class="case-thumb">
+                            <img src="assets/software-accessibility.webp" alt="Титульный слайд презентации «Цифровая доступность российского ПО»" data-i18n-attr="alt:case.accessibility.alt" loading="lazy">
+                        </a>
+                        <div class="case-body">
+                            <h3 class="case-title" data-i18n="case.accessibility.title">Цифровая доступность российского ПО</h3>
+                            <p class="case-description" data-i18n="case.accessibility.desc">Презентация для Минцифры России: 18 интерактивных слайдов о барьерах и способах сделать программы доступнее.</p>
+                            <div class="case-actions">
+                                <a href="https://isolovyev.gitverse.site/accessibility/" target="_blank" rel="noopener noreferrer" class="btn-primary" data-i18n="case.accessibility.btn">Открыть презентацию</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Кейс 1: Telegram-бот -->
                     <div class="case-card">
                         <a href="https://t.me/is_k_bot" target="_blank" rel="noopener noreferrer" class="case-thumb">
@@ -286,13 +334,20 @@
                         <span data-i18n="contact.mail">Написать письмо</span>
                     </a>
                     
-                    <a href="assets/ivan-solovyev.vcf" download class="contact-btn btn-outline">
+                    <a href="assets/ivan-solovyev.vcf" download class="contact-btn btn-soft">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
                         <span data-i18n="contact.vcard">Скачать контакт (vCard)</span>
+                    </a>
+                    <a href="https://t.me/is_consulting_bot" target="_blank" rel="noopener noreferrer" class="contact-btn btn-outline">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                        </svg>
+                        <span data-i18n="contact.consultation">Заказать консультацию</span>
                     </a>
                 </div>
 
@@ -325,6 +380,7 @@
                     <a href="https://t.me/isolovyev" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram">Telegram</a>
                     <a href="https://instagram.com/isolovyev" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">Instagram</a>
                     <a href="mailto:isolovyev@mail.ru" class="social-link" aria-label="Email">E-mail</a>
+                    <a href="https://t.me/is_consulting_bot" target="_blank" rel="noopener noreferrer" class="social-link" data-i18n="contact.consultationShort">Консультация</a>
                 </div>
             </div>
         </section>
@@ -336,6 +392,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=8"></script>
 </body>
 </html>
